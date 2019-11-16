@@ -3,7 +3,7 @@ import itertools
 
 def write_out_file():
     new_file = open("new_spam.csv", "w+")
-    headers = ["doesHaveLinks", "doesHaveSpammyWords", "LengthOfText", "NumberOfSymbols"]
+    headers = ["doesHaveLinks", "doesHaveSpammyWords", "LengthOfText", "NumberOfSymbols", "class", "message"]
     i = 0
     while i != len(headers):
         new_file.write(headers[i])
@@ -22,7 +22,7 @@ def get_length_of_text(text_message):
     return len(text_message)
 
 def get_number_of_symbols(text_message):
-    if "Â£" in text_message or "™" in text_message or "*" in text_message or "(" in text_message or ":" in text_message or "'\'" in text_message or "/" in text_message or "-" in text_message:
+    if text_message.isnumeric() or text_message.is
         return True
 
 def predict_spam(text_message):
