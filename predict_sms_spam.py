@@ -22,8 +22,8 @@ def get_length_of_text(text_message):
     return len(text_message)
 
 def get_number_of_symbols(text_message):
-    if text_message.isnumeric() or text_message.is
-        return True
+    if text_message.isnumeric() or text_message.isalpha():
+        return False
 
 def predict_spam(text_message):
     dhl = does_have_links(text_message)
