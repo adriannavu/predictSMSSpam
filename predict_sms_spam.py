@@ -3,9 +3,9 @@ import itertools
 
 # returns new csv file with first row written out
 def write_file():
-    new_file = open("new_spam.csv", "w")
+    new_file = open("new_spam.csv", "w+")
     # initialize first row headers
-    columns = ["class", "doesHaveLinks", "doesHaveSpammyWords", "LengthOfText", "NumberOfSymbols", "message"]
+    columns = ["doesHaveLinks", "doesHaveSpammyWords", "LengthOfText", "NumberOfSymbols", "class"]
     i = 0
     while i != len(columns):
         new_file.write(columns[i])
@@ -15,15 +15,10 @@ def write_file():
     return new_file
 
 # returns the new csv file with the new features
-def add_features_to_file(file, class_list, message_list, dsl_list, dhsw_list, lot_list, nos_list, file_length):
-    # if message contains comma, replace it with ~
-    for message in message_list:
-        message.replace(",", "~")
+def add_features_to_file(file, class_list, dsl_list, dhsw_list, lot_list, nos_list, file_length):
     # start from the second row to avoid "v1" and "v2" becoming data points
     i = 1
     while i < file_length:
-        file.write(class_list[i])
-        file.write(",")
         file.write(str(dsl_list[i]))
         file.write(",")
         file.write(str(dhsw_list[i]))
@@ -32,12 +27,9 @@ def add_features_to_file(file, class_list, message_list, dsl_list, dhsw_list, lo
         file.write(",")
         file.write(str(nos_list[i]))
         file.write(",")
-        file.write(str(message_list[i]))
+        file.write(class_list[i])
         file.write("\n")
         i += 1
-    # if message contains ~, replace it with comma
-    for char in file:
-        char.replace("~", ",")
 
 def does_have_links(text_message):
     if "http" in text_message or ".com" in text_message or ".co.uk" in text_message or "www" in text_message:
@@ -76,7 +68,6 @@ def main():
     messageCol = 1
     with open('spam.csv', encoding="ISO-8859-1") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
-        message_list = []
         class_list = []
         dsl_list = []
         dhsw_list = []
@@ -90,8 +81,7 @@ def main():
             nos_list.append(get_number_of_symbols(row[messageCol]))
             dhsw_list.append(does_have_links(row[messageCol]))
             dsl_list.append(does_have_spammy_words(row[messageCol]))
-            message_list.append(row[messageCol])
             in_file_length += 1
-        add_features_to_file(new_file, class_list, message_list, dsl_list, dhsw_list, lot_list, nos_list, in_file_length)
+        add_features_to_file(new_file, class_list, dsl_list, dhsw_list, lot_list, nos_list, in_file_length)
 
 main()
