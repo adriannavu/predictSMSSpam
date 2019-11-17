@@ -98,14 +98,14 @@ def main():
         lot_list = []
         nos_list = []
         new_file = write_file()
-        in_file_length = 0
+        new_file_length = 0
         for row in csv_reader:
             class_list.append(row[classCol])
             lot_list.append(get_length(row[messageCol]))
             nos_list.append(get_number_of_symbols(row[messageCol]))
             dhsw_list.append(does_have_links(row[messageCol]))
             dsl_list.append(does_have_spammy_words(row[messageCol]))
-            in_file_length += 1
-        add_features_to_file(new_file, class_list, dsl_list, dhsw_list, lot_list, nos_list, in_file_length)
+            new_file_length += 1
+        add_features_to_file(new_file, class_list, dsl_list, dhsw_list, lot_list, nos_list, new_file_length)
 
 main()
