@@ -1,8 +1,6 @@
 # SMS Spam Detection
 
-Discuss how you designed your program.
-a. Walk us through your program
-b. What functions you used and why
+Uses basic machine learning algorithm to predict whether a message is spam.
 
 ## Functions
 1. Used write_file() to create new csv file with first row written out
