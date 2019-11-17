@@ -1,0 +1,26 @@
+﻿Weka Classifier Tree Visualizer If/Else Rules
+1. If message doesn’t have links, length of text is less than or equal to 99, and it doesn’t have spammy words, it’s ham.
+2. If message doesn’t have links, length of text is less than or equal to 99, it does have spammy words, and number of symbols is less than or equal to 4, it’s ham.
+3. If message doesn’t have links, length of text is less than or equal to 99, it does have spammy words, and number of symbols is greater than 4, it’s spam.
+4. If message doesn’t have links, length of text is greater than 99, it doesn’t have spammy words, length of text is less than or equal to 131, it’s ham.
+5. If message doesn’t have links, length of text is greater than 99, it doesn’t have spammy words, length of text is greater than 131, number of symbols is less than or equal to 14, length of text is less than or equal to 164, length of text is less than or equal to 160, number of symbols is less than or equal to 9, number of symbols is less than or equal to 8, it’s ham.
+6. If message doesn’t have links, length of text is greater than 99, it doesn’t have spammy words, length of text is greater than 131, number of symbols is less than or equal to 14, length of text is less than or equal to 164, length of text is less than or equal to 160, number of symbols is less than or equal to 9, number of symbols is greater than 8, it’s spam.
+7. If message doesn’t have links, length of text is greater than 99, it doesn’t have spammy words, length of text is greater than 131, number of symbols is less than or equal to 14, length of text is less than or equal to 164, length of text is less than or equal to 160, number of symbols is greater than 9, it’s ham.
+8. If message doesn’t have links, length of text is greater than 99, it doesn’t have spammy words, length of text is greater than 131, number of symbols is less than or equal to 14, length of text is less than or equal to 164, length of text is greater than 160, it’s spam.
+9. If message doesn’t have links, length of text is greater than 99, it doesn’t have spammy words, length of text is greater than 131, number of symbols is less than or equal to 14, length of text is greater than 164, it’s ham.
+10. If message doesn’t have links, length of text is greater than 99, it doesn’t have spammy words, length of text is greater than 131, number of symbols is greater than 14, it’s ham.
+11. If message doesn’t have links, length of text is greater than 99, and it does have spammy words, it’s spam.
+12. If message does have links, it’s spam.
+Weka Classifier Tree Visualizer If/Else Rules Simplified
+1. If message doesn’t have links, length of text is less than or equal to 99, and it doesn’t have spammy words, it’s ham.
+2. If message doesn’t have links, length of text is less than or equal to 99, it does have spammy words, and number of symbols is less than or equal to 4, it’s ham.
+3. If message doesn’t have links, length of text is less than or equal to 99, it does have spammy words, and number of symbols is greater than 4, it’s spam.
+4. If message doesn’t have links, length of text is greater than 99, it doesn’t have spammy words, length of text is less than or equal to 131, it’s ham.
+5. If message doesn’t have links, it doesn’t have spammy words, length of text is greater than 131 and less than or equal to 160, number of symbols is less than or equal to 8, it’s ham.
+6. If message doesn’t have links, it doesn’t have spammy words, length of text is greater than 131 and less than or equal to 160, number of symbols is less than or equal to 9 and greater than 8, it’s spam.
+7. If message doesn’t have links, it doesn’t have spammy words, number of symbols is less than or equal to 14 and greater than 9, length of text is less than or equal to 160 and greater than 131, it’s ham.
+8. If message doesn’t have links, it doesn’t have spammy words, number of symbols is less than or equal to 14, length of text is less than or equal to 164 and greater than 160, it’s spam.
+9. If message doesn’t have links, it doesn’t have spammy words, number of symbols is less than or equal to 14, length of text is greater than 164, it’s ham.
+10. If message doesn’t have links, it doesn’t have spammy words, length of text is greater than 131, number of symbols is greater than 14, it’s ham.
+11. If message doesn’t have links, length of text is greater than 99, and it does have spammy words, it’s spam.
+12. If message does have links, it’s spam.
