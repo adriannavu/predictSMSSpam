@@ -18,5 +18,7 @@ Used lists to track each text_message's class, does because order matters; each 
 
 ## Results
 131/5566 classes in sms_spam_detection.csv after calling predict_spam(text_message) were incorrect. Based on the given dataset, the SMS Spam Detection tool is 97.6% accurate.
+
 I would try to improve this model by testing the algorithm on another dataset to see if it is just as accurate. I would also try to improve does_have_spammy_words(text_message) by adding more possibly spammy words. To account for text messages in different languages, I would want to improve both does_have_spammy_words(text_message) and get_number_of_symbols(text_message) to include other symbols and spammy words frequently used in other languages besides English.
+
 Nevertheless, I learned a good deal about the technicalities of basic machine learning in Python. I learned how to create decision trees, how to open .csv files, how to write .csv files without the use of external libraries, and how to make use of data structures in real-world scenarios.
