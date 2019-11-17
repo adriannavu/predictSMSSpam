@@ -102,7 +102,7 @@ def main():
         new_file = write_file()
         new_file_length = 0
         for row in csv_reader:
-            # used to create weka decision tree
+            # used to create decision tree
             class_list.append(row[classCol])
             # use to predict spam
             class_list.append(predict_spam(row[messageCol]))
