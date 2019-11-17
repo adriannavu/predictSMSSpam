@@ -62,7 +62,7 @@ def predict_spam(text_message):
     dhsw = does_have_spammy_words(text_message)
     nos = get_number_of_symbols(text_message)
     lot = get_length(text_message)
-    if dhl == False and los <= 99 and dhsw == False:
+    if dhl == False and lot <= 99 and dhsw == False:
         return "ham"
     elif dhl == False and lot <= 99 and dhsw == True and nos <= 4:
         return "ham"
@@ -100,7 +100,7 @@ def main():
         new_file = write_file()
         new_file_length = 0
         for row in csv_reader:
-            class_list.append(row[classCol])
+            class_list.append(predict_spam(row[messageCol]))
             lot_list.append(get_length(row[messageCol]))
             nos_list.append(get_number_of_symbols(row[messageCol]))
             dhsw_list.append(does_have_links(row[messageCol]))
