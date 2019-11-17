@@ -1,5 +1,4 @@
 import csv
-import itertools
 
 # returns new csv file with first row written out
 def write_file():
@@ -43,25 +42,50 @@ def does_have_spammy_words(text_message):
     else:
         return False
 
-# returns the text length in the text message
+# returns the number of characters including spaces in the text message
 def get_length(text_message):
     return len(text_message)
 
 # returns the number of symbols in the text message
 def get_number_of_symbols(text_message):
-    if text_message.isalnum():
-        return False
-    else:
-        return True
+    count = 0
+    symbols = [',', '.', ';', ':', '<', '>', '?', '/', '[', ']', '{', '}', '\'', '|', '!', '@', '#', '$', '£', '%', '^', '&', '*', '(', ')', '_', '-', '+', '=']
+    for char in text_message:
+        for symbol in symbols:
+            if char == symbol:
+                count += 1
+    return count
 
 # returns "spam" if spam or "ham" if not spam
 def predict_spam(text_message):
     dhl = does_have_links(text_message)
     dhsw = does_have_spammy_words(text_message)
-    if dhl == True or dhsw == True:
+    nos = get_number_of_symbols(text_message)
+    lot = get_length(text_message)
+    if dhl == False and los <= 99 and dhsw == False:
+        return "ham"
+    elif dhl == False and lot <= 99 and dhsw == True and nos <= 4:
+        return "ham"
+    elif dhl == False and lot <= 99 and dhsw == True and nos > 4:
+        return "spam"
+    elif dhl == False and lot > 99 and dhsw == False and lot <= 131:
+        return "ham"
+    elif dhl == False and dhsw == False and 131 < lot <= 160 and nos <= 8:
+        return "ham"
+    elif dhl == False and dhsw == False and 131 < lot <= 160 and 8 < nos <= 9:
+        return "spam"
+    elif dhl == False and dhsw == False and 131 < lot <= 160 and 9 < nos <= 14:
+        return "ham"
+    elif dhl == False and dhsw == False and nos <= 14 and 160 < lot <= 164:
+        return "spam"
+    elif dhl == False and dhsw == False and nos <= 14 and lot > 164:
+        return "ham"
+    elif dhl == False and dhsw == False and nos > 14 and lot > 131:
+        return "ham"
+    elif dhl == False and dhsw == True:
         return "spam"
     else:
-        return "ham"
+        return "spam"
 
 def main():
     classCol = 0
@@ -76,7 +100,7 @@ def main():
         new_file = write_file()
         in_file_length = 0
         for row in csv_reader:
-            class_list.append(predict_spam(row[messageCol]))
+            class_list.append(row[classCol])
             lot_list.append(get_length(row[messageCol]))
             nos_list.append(get_number_of_symbols(row[messageCol]))
             dhsw_list.append(does_have_links(row[messageCol]))
