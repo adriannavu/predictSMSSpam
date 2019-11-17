@@ -1,17 +1,25 @@
 import csv
 import itertools
 
-# def write_out_file():
-#     new_file = open("new_spam.csv", "w+")
-#     headers = ["doesHaveLinks", "doesHaveSpammyWords", "LengthOfText", "NumberOfSymbols", "class", "message"]
-#     i = 0
-#     while i != len(headers):
-#         new_file.write(headers[i])
-#         new_file.write(",")
-#         i += 1
+def write_out_file():
+    new_file = open("new_spam.csv", "w+")
+    columns = ["class", "message", "doesHaveLinks", "doesHaveSpammyWords", "LengthOfText", "NumberOfSymbols"]
+    i = 0
+    while i != len(columns):
+        new_file.write(columns[i])
+        new_file.write(",")
+        i += 1
+    new_file.write("\n")
+    return new_file
+
+def add_features_to_file(file, class_list, message_list, dsl_list, dhsw_list, lot_list, nos_list):
+    with open("new_spam.csv", encoding="ISO-8859-1") as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+    for row in csv_reader:
+        file.write(class_list)
 
 def does_have_links(text_message):
-    if "http" in text_message or ".com" in text_message or ".co.uk" in text_message:
+    if "http" in text_message or ".com" in text_message or ".co.uk" in text_message or "www" in text_message:
         return True
     else:
         return False
@@ -40,38 +48,32 @@ def predict_spam(text_message):
         return "ham"
 
 def main():
-    CLASS_COLUMN = 0
-    TEXT_MESSAGE = 1
-    doesHaveLinks = 2
-    doesHaveSpammyWords = 3
-    LengthOfText = 4
-    NumberOfSymbols = 5
-
-    with open('spam1.csv', encoding="ISO-8859-1") as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=','
+    classCol = 0
+    messageCol = 1
+    with open('spam_test.csv', encoding="ISO-8859-1") as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
         message_list = []
         class_list = []
-        length_of_text_list = []
-        number_of_symboles_list = []
+        dsl_list = []
+        dhsw_list = []
+        lot_list = []
+        nos_list = []
+        #write out file
+        new_file = write_out_file()
         # for each text message
         for row in csv_reader:
             #returns "spam" if spam or "ham" if not spam
-            predict_spam(row[TEXT_MESSAGE])
+            class_list.append(predict_spam(row[messageCol]))
             #returns the text length in the text message
-            get_length_of_text(row[TEXT_MESSAGE])
+            lot_list.append(get_length_of_text(row[messageCol]))
 	        #returns the number of symbols in the text message
-            get_number_of_symbols(row[TEXT_MESSAGE])
-            #write new csv file
-            # write_out_file()
-            new_file = open("new_spam.csv", "w+")
-            headers = ["doesHaveLinks", "doesHaveSpammyWords", "LengthOfText", "NumberOfSymbols", "class", "message"]
-            i = 0
-            while i != len(headers):
-                new_file.write(headers[i])
-                new_file.write(",")
-                i += 1
-            #append the features above to the new csv file
-            new_file.write(predict_spam(row[TEXT_MESSAGE]))
+            nos_list.append(get_number_of_symbols(row[messageCol]))
+            dhsw_list.append(does_have_links(row[messageCol]))
+            dsl_list.append(does_have_spammy_words(row[messageCol]))
+            message_list.append(row[messageCol])
+        #write_out_file() and append the features above to the new csv file
+        add_features_to_file(new_file, class_list, message_list, dsl_list, dhsw_list, lot_list, nos_list)
+
 
 
 
