@@ -104,7 +104,7 @@ def main():
         for row in csv_reader:
             # used to create decision tree
             # class_list.append(row[classCol])
-            # use to predict spam
+            # used to predict spam
             class_list.append(predict_spam(row[messageCol]))
             dhl_list.append(does_have_links(row[messageCol]))
             dhsw_list.append(does_have_spammy_words(row[messageCol]))
