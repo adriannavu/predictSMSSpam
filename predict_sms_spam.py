@@ -103,7 +103,7 @@ def main():
         new_file_length = 0
         for row in csv_reader:
             # used to create decision tree
-            class_list.append(row[classCol])
+            # class_list.append(row[classCol])
             # use to predict spam
             class_list.append(predict_spam(row[messageCol]))
             dhl_list.append(does_have_links(row[messageCol]))
