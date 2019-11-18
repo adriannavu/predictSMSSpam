@@ -17,7 +17,7 @@ res to csv file
 Used lists to track each text_message's class, does because order matters; each row in sms_spam_detection.csv refers to a different text_message.
 
 ## Results
-131/5566 classes in sms_spam_detection.csv after calling predict_spam(text_message) were incorrect. Based on the given dataset, the SMS Spam Detection tool is 97.6% accurate.
+There were 131/5566 incorrect classes in sms_spam_detection.csv after calling predict_spam(text_message). Based on the given dataset, the SMS Spam Detection tool is 97.6% accurate.
 
 I would try to improve this model by testing the algorithm on another dataset to see if it is just as accurate. I would also try to improve does_have_spammy_words(text_message) by adding more possibly spammy words. To account for text messages in different languages, I would want to improve both does_have_spammy_words(text_message) and get_number_of_symbols(text_message) to include other symbols and spammy words frequently used in other languages besides English.
 
