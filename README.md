@@ -11,7 +11,7 @@ Uses basic machine learning algorithm to predict whether a message is spam.
 5. Create new .csv file with class predictions
 
 
-## Create functions for each feature
+## Create Functions for each Feature
 - does_have_links(text_message)
 - does_have_spammy_words(text_message)
 - get_length(text_message)
@@ -25,17 +25,17 @@ Uses basic machine learning algorithm to predict whether a message is spam.
   - returns the new .csv file with the new features
 
 
-## Use spam.csv to create decision tree in Weka
+## Use spam.csv to Create Decision Tree in Weka
 See Tree View.png
 
 
-## Use decision tree to write prediction algorithm
+## Use Decision Tree to Write Prediction Algorithm
 - Convert decision tree to pseudocode
 - Eliminate variable redundancies
 See Classifier Tree Visualizer If_Else Rules.txt
 
 
-## Create new .csv file with class predictions
+## Create New .csv file with Class Predictions
 - write_file():
   - returns new csv file with first row written out
 - for every row in spam.csv, 
