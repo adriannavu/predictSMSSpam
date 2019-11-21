@@ -16,26 +16,26 @@ Uses basic machine learning algorithm to predict whether a message is spam.
 - get_number_of_symbols(text_message)
   
 ## 2. Add Features to spam.csv
-a. Put results of each function into separate lists
+- Put results of each function into separate lists
   - Use lists because order matters; each row in the new file (sms_spam_detection.csv) will refer to a different text_message.
-b. add_features_to_file(file, class_list, dhl_list, dhsw_list, lot_list, nos_list, file_length)
+- add_features_to_file(file, class_list, dhl_list, dhsw_list, lot_list, nos_list, file_length)
   - returns the new .csv file with the new features
 
 ## 3. Use spam.csv to create decision tree in Weka
 See Tree View.png
 
 ## 4. Use decision tree to write prediction algorithm
-a. Convert decision tree to pseudocode
-b. Eliminate variable redundancies
+- Convert decision tree to pseudocode
+- Eliminate variable redundancies
 See Classifier Tree Visualizer If_Else Rules.txt
 
 ## 5. Create new .csv file with class predictions
-a. write_file():
+- write_file():
   - returns new csv file with first row written out
-b for every row in spam.csv, 
-   append class_list
-   append other features (i.g. dhl_list, dhsw_list, lot_list, nos_list)
-   add all these lists to the new .csv file
+- for every row in spam.csv, 
+  - append class_list
+  - append other features (i.g. dhl_list, dhsw_list, lot_list, nos_list)
+  - add all these lists to the new .csv file
  
 ## Results
 There were 312/5566 incorrect classes in sms_spam_detection.csv after calling predict_spam(text_message). Based on the given dataset, the SMS Spam Detection tool is 94.4% accurate.
