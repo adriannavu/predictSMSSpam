@@ -11,7 +11,7 @@ Uses basic machine learning algorithm to predict whether a message is spam.
 5. Create new .csv file with class predictions
 
 
-## Create Functions for each Feature
+## Create Functions for Each Feature
 - does_have_links(text_message)
 - does_have_spammy_words(text_message)
 - get_length(text_message)
